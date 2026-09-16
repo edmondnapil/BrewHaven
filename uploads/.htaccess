@@ -1,0 +1,7 @@
+# Proof attachments are evidence attached to account actions. They are never
+# served directly from the filesystem: php/proof_download.php re-checks who is
+# asking before it streams one back.
+Options -Indexes
+Require all denied
+
+ErrorDocument 403 /BrewHaven/html/404.html

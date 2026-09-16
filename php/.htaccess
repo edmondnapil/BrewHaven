@@ -1,0 +1,13 @@
+Options -Indexes
+
+# Application endpoints in this folder must be reachable by the Admin / Super
+# Admin UI (forms and the Confirm Password AJAX check). Match the /php/ path
+# case-insensitively: Windows/XAMPP users often open the app as /brewhaven
+# while the folder on disk is BrewHaven, and a case-sensitive check was
+# returning 403 HTML for verify_action_password.php (which the confirm modal
+# then reported as a password failure).
+<FilesMatch "\.php$">
+    Require expr %{REQUEST_URI} =~ m#/php/#i
+</FilesMatch>
+
+ErrorDocument 403 /BrewHaven/html/404.html

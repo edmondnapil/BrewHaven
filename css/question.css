@@ -1,0 +1,887 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Match Register page visual system (scoped to questions page) --- */
+.security-questions-page {
+    font-family: 'Quicksand', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* Premium Form Container Styling */
+.security-questions-page .form-box {
+    background: rgba(249, 239, 224, 0.97) !important;
+    color: #2a170e !important;
+    border: 1px solid rgba(196, 122, 44, 0.25) !important;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 8px 24px rgba(196, 122, 44, 0.15),
+        0 0 0 1px rgba(196, 122, 44, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(196, 122, 44, 0.1) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.security-questions-page .form-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c47a2c, #e6a64d, #c47a2c);
+    border-radius: 16px 16px 0 0;
+    z-index: 1;
+}
+
+/* Premium Form Layout */
+.security-questions-page .form-box.register-form {
+    width: 100% !important;
+    max-width: 980px !important;
+    padding: 22px 28px 30px !important;
+    margin: 0 auto;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #fff;
+}
+
+/* Premium Input Fields */
+.security-questions-page .form-box input,
+.security-questions-page .form-box select,
+.security-questions-page .form-box textarea {
+    width: 100%;
+    padding: 5px 8px;
+    margin: 0 0 4px;
+    border: 1px solid rgba(196, 122, 44, 0.3);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #2a170e;
+    font-size: 0.8rem;
+    line-height: 1.95;
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,0.05),
+        0 2px 4px rgba(196, 122, 44, 0.08);
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 400;
+}
+
+.security-questions-page .form-box input:focus,
+.security-questions-page .form-box select:focus,
+.security-questions-page .form-box textarea:focus {
+    border-color: rgba(196, 122, 44, 0.7);
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(196, 122, 44, 0.15),
+        0 4px 12px rgba(196, 122, 44, 0.12),
+        inset 0 1px 3px rgba(0,0,0,0.05);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Premium Select Dropdown Styling */
+.security-questions-page .form-box select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238a6d3b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+    padding-right: 32px;
+    width: 100%;
+}
+
+/* Premium Input Group for Toggle Icons */
+.security-questions-page .input-with-toggle {
+    position: relative;
+    margin: 1px 0 1px;
+}
+
+.security-questions-page .input-with-toggle input {
+    padding-right: 36px;
+}
+
+/* Disable default browser password toggle */
+.security-questions-page .input-with-toggle input[type="password"]::-ms-reveal,
+.security-questions-page .input-with-toggle input[type="password"]::-ms-clear {
+    display: none;
+}
+
+.security-questions-page .input-with-toggle input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: -9999px !important;
+}
+
+.security-questions-page .input-with-toggle .togele-eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a6d3b;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.security-questions-page .input-with-toggle .togele-eye:hover {
+    opacity: 1;
+}
+
+/* Premium Label Styling */
+.security-questions-page .register-grid label,
+.security-questions-page .auth-questions-center label,
+.security-questions-page .auth-question label {
+    display: block;
+    font-weight: 700;
+    margin: 0 0 1px 0;
+    color: #3f2415;
+    font-size: 0.78rem;
+    text-align: left;
+    letter-spacing: 0.08px;
+    transition: color 0.2s ease;
+}
+
+/* Premium Error Messages */
+.security-questions-page .error-message {
+    color: #dc3545 !important;
+    font-size: 0.90rem !important;
+    margin: 2px 0 0 0 !important;
+    padding: 0 0 0 4px !important;
+    min-height: 10px !important;
+    max-height: 10px !important;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    line-height: 1.3;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 4px !important;
+}
+
+.security-questions-page .error-message::before {
+    content: '';
+    display: none;
+}
+
+.security-questions-page .error-message.show {
+    visibility: visible;
+    opacity: 1;
+    min-height: 12px !important;
+    max-height: 120px !important;
+    margin: 0.5px 0 0 0 !important;
+}
+
+/* Premium Question Grid Layout */
+.security-questions-page .auth-questions-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 8px 0 6px;
+}
+
+.security-questions-page .auth-questions-center > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    border: 1px solid rgba(202, 169, 122, 0.28);
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    flex: 0 1 295px;
+    max-width: 330px;
+}
+
+.security-questions-page .auth-questions-center > div:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(202, 169, 122, 0.25);
+}
+.security-questions-page .prev-btn,
+.security-questions-page .next-btn,
+#prev-button,
+#next-button {
+    width: 45%;
+    max-width: 100px;
+    padding: 5px 11px;
+    background: linear-gradient(135deg, #c47a2c 0%, #e6a64d 100%) !important;
+    border: 1px solid rgba(196, 122, 44, 0.3) !important;
+    color: #2f1a0d !important;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 4px !important;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    margin: 4px auto 0;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    box-shadow: 
+        0 4px 12px rgba(196, 122, 44, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.security-questions-page .prev-btn,
+#prev-button {
+    background: linear-gradient(135deg, #b77b36d0 0%, #dca24b 100%) !important;
+}
+
+#next-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.security-questions-page .full-row .prev-btn,
+.security-questions-page .full-row .next-btn,
+.security-questions-page #prev-button,
+.security-questions-page #next-button {
+	margin: 4px 4px 0 !important;
+}
+
+/* Center Previous and Register buttons side by side within the form box */
+.security-questions-page .full-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0px;
+	margin: 8px 0 2px;
+	width: 100%;
+}
+
+.security-questions-page .button-row {
+	gap: 0px;
+	margin: 26px auto 6px;
+}
+
+
+/* Responsive adjustments to keep alignment clean on narrower screens */
+@media (max-width: 900px) {
+    .security-questions-page .auth-questions-center {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 16px;
+    }
+    
+    .security-questions-page .form-box.register-form {
+        padding: 5px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header-content {
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .security-questions-page .auth-questions-center {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .security-questions-page .form-box.register-form {
+        padding: 20px 18px !important;
+    }
+    
+    .security-questions-page .full-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    h2.full-row {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* (moved overrides to end of file for stronger cascade) */
+
+.security-questions-page h2.full-row {
+    color: #792c08db;
+    text-align: center;
+    margin: 0 auto 22px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 6px 0 0.35rem;
+    position: relative;
+    letter-spacing: 0.25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    transform: translateY(-4px);
+}
+
+.security-questions-page h2.full-row::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    left: 30%;
+    right: 30%;
+    height: 1.5px;
+    background: linear-gradient(90deg, #c47a2c, #e6a64d);
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #b37944 0%, #221610 100%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    z-index: 1000;
+    border-bottom: 1.5px solid #c47a2c;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+}
+
+.header-content h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.75rem;
+    letter-spacing: 1.2px;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.8px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 209, 128, 0.8) 0%,
+        rgba(255, 179, 71, 1) 50%,
+        rgba(255, 209, 128, 0.8) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(255, 209, 128, 0.5);
+}
+
+/* Background for Register Page */
+.bg-register {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: 
+        url("../images/wawa.webp") no-repeat center center/cover;
+}
+
+/* Hero Layout - Two Column */
+.hero {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0 40px;
+}
+
+.hero-inner {
+    max-width: 1300px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+}
+
+/* Left Side - Registration Form */
+.left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    min-height: 100%;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* Form container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+.security-questions-page .form-box.register-form {
+    /* center content vertically inside the form box for this page */
+    display: flex; /* already set globally, reaffirm here */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.security-questions-page .auth-questions-center {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 0 6px;
+}
+
+.security-questions-page .auth-questions-center > div {
+    width: 100%;
+    max-width: 330px;
+    box-sizing: border-box;
+}
+
+.security-questions-page .auth-questions-center label {
+    text-align: left; /* keep label aligned left within each centered block */
+}
+
+
+/* Form box */
+.form-box {
+    border: 1px solid rgba(202,169,122,0.12);
+    box-shadow:
+        0 18px 40px rgba(202,169,122,0.08),
+        0 0 0 1px rgba(210,180,140,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    color: #2a170e;
+    background: rgb(247, 233, 233);
+    padding: 80px;
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    position: relative;
+    margin: 0 auto;
+}
+
+.form-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(233,184,115,0.6), transparent);
+}
+
+.form-box::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(196,122,44,0.14), transparent 70%);
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+/* Remove any conflicting margin */
+.security-questions-page .auth-questions-center {
+    margin-top: 0 !important;
+}
+
+
+.form-box h2::after {
+    content: "";
+    display: block;
+    margin: 4px 0 0;
+    width: 50px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #888, #aaa);
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 1px 0 3px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #333;
+    font-size: 0.95rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+    border-color: rgba(196, 122, 44, 0.7);
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(196, 122, 44, 0.15),
+        0 4px 12px rgba(196, 122, 44, 0.12),
+        inset 0 1px 3px rgba(0,0,0,0.05);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.form-box button {
+    width: 60%;
+    max-width: 300px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #c47a2c 0%, #e6a64d 100%);
+    border: none;
+    color: #2f1a0d;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(196, 122, 44, 0.3);
+    display: block;
+    margin: 16px auto 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 
+        0 4px 12px rgba(196, 122, 44, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-box button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+/* Register Form 5-column Grid */
+.form-box.register-form {
+    width: 100%;
+    max-width: 1100px;
+    padding: 2px 6px 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.register-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px 29px;
+    align-items: end;
+}
+
+.register-grid label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: black;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    min-height: 12px;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    text-align: left;
+}
+
+.error-message.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- Overrides (end of file): Ensure taller Security Questions form box --- */
+.security-questions-page .form-box.register-form {
+    min-height: 350px !important; /* reduced height for more compact form */
+}
+
+/* --- Polished, formal layout for Security Questions --- */
+/* Reduce excessive padding on the panel while keeping the taller height */
+.security-questions-page .form-box {
+    padding: 20px 24px !important; /* tighter, more compact spacing */
+}
+
+/* Balance spacing between labels and inputs */
+.security-questions-page .auth-questions-center label {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    color: #2a170e;
+}
+
+
+/* Align the three question columns neatly and reduce internal gaps */
+.security-questions-page .auth-questions-center {
+    align-items: flex-start;
+    gap: 8px; /* reduced gap for tighter spacing */
+}
+
+.security-questions-page .auth-questions-center > div {
+    padding: 6px 8px; /* reduced padding for tighter spacing */
+    min-height: 120px; /* reduced height */
+}
+
+
+
+.register-grid input,
+.register-grid select,
+.register-grid textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-grid .full-row {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+    .register-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-box.register-form {
+        max-width: 98vw;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Responsive Design for Two-Column Layout */
+@media (max-width: 1200px) {
+    .hero-inner {
+        flex-direction: column;
+        gap: 12px;
+        padding: 60px 12px 12px;
+    }
+    
+    .left-side {
+        order: 2;
+        height: auto;
+        min-height: auto;
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-inner {
+        padding: 60px 10px 10px;
+    }
+    
+    .register-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px 6px;
+    }
+    
+    .form-box.register-form {
+        padding: 10px 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .header-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-actions {
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .register-grid {
+        grid-template-columns: 1fr;
+        gap: 2px 4px;
+    }
+
+    .form-box.register-form {
+        padding: 8px 10px 25px;
+    }
+}
+
+/* Password visibility toggle icon inside inputs */
+.input-with-toggle { position: relative; }
+.input-with-toggle input { padding-right: 34px; }
+
+/* Disable default browser password toggle */
+.input-with-toggle input[type="password"]::-ms-reveal,
+.input-with-toggle input[type="password"]::-ms-clear {
+    display: none;
+}
+
+.input-with-toggle input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: -9999px !important;
+}
+.input-with-toggle .togele-eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    pointer-events: auto;
+}
+.input-with-toggle .togele-eye:hover { color: #555; }
+
+/* Footer */
+.main-footer {
+    width: 100%;
+    background: linear-gradient(90deg, #b37944 0%, #221610 100%);
+    color: #fff;
+    padding: 18px 0 12px 0;
+    border-top: 2px solid #c47a2c;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0 1rem;
+    font-size: 1rem;
+}

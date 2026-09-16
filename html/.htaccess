@@ -1,0 +1,7 @@
+Options -Indexes
+
+# Handle 404 Not Found
+ErrorDocument 404 /BrewHaven/html/404.html
+
+# (Optional) Handle 403 Forbidden
+ErrorDocument 403 /BrewHaven/html/404.html

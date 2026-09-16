@@ -1,0 +1,16 @@
+# Anti-hotlinking for CSS
+RewriteEngine On
+
+# ALLOW: same-origin/same-site style fetches
+RewriteCond %{HTTP:Sec-Fetch-Dest} ^style$ [NC]
+RewriteCond %{HTTP:Sec-Fetch-Site} ^(same-origin|same-site)$ [NC]
+RewriteRule \.css$ - [L]
+
+# ALLOW: requests with Referer from our site (for browsers without Sec-Fetch headers)
+RewriteCond %{HTTP_REFERER} ^https?://(localhost|127\.0\.0\.1)/BrewHaven [NC]
+RewriteRule \.css$ - [L]
+
+# DENY everything else (direct opens, view-source clicks, cross-site)
+RewriteRule \.css$ - [R=404,L]
+
+ErrorDocument 404 /BrewHaven/html/404.html

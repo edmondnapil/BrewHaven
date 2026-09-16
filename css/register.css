@@ -1,0 +1,1099 @@
+/* Reset and Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+/* Premium Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, #1a0f0a 0%, #2a170e 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #c47a2c 0%, #ffb347 100%);
+    border-radius: 10px;
+    border: 2px solid #1a0f0a;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ffb347 0%, #ffd180 100%);
+    box-shadow: 0 0 10px rgba(255, 179, 71, 0.5);
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(196, 122, 44, 0.3);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(196, 122, 44, 0.3);
+    color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Password Strength Indicator */
+.password-strength-container {
+    margin: 0.5px 0 0.25px;
+}
+
+.password-strength-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Strength levels */
+.strength-weak {
+    background-color: #ff4444; /* Red for weak */
+    width: 33%;
+}
+
+.strength-medium {
+    background-color: #ffbb33; /* Orange for medium */
+    width: 66%;
+}
+
+.strength-strong {
+    background-color: #00C851; /* Green for strong */
+    width: 100%;
+}
+
+.password-strength-message {
+    font-size: 0.80rem;
+    min-height: 1.2rem;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+/* Password match indicator */
+.password-match {
+    font-size: 0.75rem;
+    margin: 2px 0 0 0;
+    min-height: 16px;
+    display: block;
+    padding: 2px 4px;
+    line-height: 1.2;
+    border-radius: 2px;
+    font-family: 'Largo', sans-serif;
+    color: #666; /* Default gray color */
+}
+
+.password-match.error {
+    color: #dc3545; /* Red for errors */
+}
+
+.password-match.success {
+    color: #00a854; /* Green for success */
+}
+
+/* Toggle password visibility */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.toggle-password:hover {
+    color: #333;
+}
+
+/* Input with toggle button */
+.input-with-toggle {
+    position: relative;
+}
+
+.input-with-toggle input[type="password"],
+.input-with-toggle input[type="text"] {
+    padding-right: 30px; /* Make room for the toggle button */
+}
+
+/* Hide native password reveal/clear icons across browsers */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+	display: none;
+}
+input[type="password"]::-webkit-textfield-decoration-container {
+	display: none;
+}
+
+body {
+    font-family: 'Quicksand', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    overflow: hidden; /* prevent page scrolling */
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1000;
+    border-bottom: none;
+    transform: scale(1);
+    transform-origin: top center;
+}
+
+.header-content {
+    max-width: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem 0.75rem 0; /* flush left */
+}
+
+.header-content h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.75rem;
+    letter-spacing: 1.2px;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.8px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 209, 128, 0.8) 0%,
+        rgba(255, 179, 71, 1) 50%,
+        rgba(255, 209, 128, 0.8) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(255, 209, 128, 0.5);
+}
+
+
+/* Background for Register Page */
+.bg-register {
+    height: 100vh; /* lock to viewport height */
+    width: 100vw;
+    overflow: hidden; /* prevent scroll */
+    background: 
+        url("../images/bubble-tea.jpg") no-repeat center center/cover;
+}
+
+/* Hero Layout - Two Column */
+.hero {
+    height: 100vh; /* fill viewport without scrolling */
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-inner {
+    max-width: 100vw;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    padding: 30px 10px 15px; /* even more reduced padding for 1366x768 */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Left Side - Registration Form */
+.left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    height: auto;
+    width: 100%;
+    overflow: visible;
+}
+
+
+
+
+/* Form container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 2px;
+    box-sizing: border-box;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+/* Customer registration form has grown long enough (Personal/Account/Address
+   sections) that it can exceed the space between the fixed header (~67px)
+   and fixed footer (~80px), letting the footer visually cover the bottom of
+   the form. Scoped to the register page only (via the register-form class):
+   reserve clearance so the centered panel never sits behind either fixed
+   bar, and let it scroll internally if content still exceeds that space. */
+.hero-inner:has(.register-form) {
+    padding: 82px 10px 79px;
+}
+.hero-inner:has(.register-form) .form-container {
+    max-height: calc(100vh - 161px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form box */
+.form-box {
+    background: rgba(233, 217, 197, 0.384);
+    padding: 18px 26px;
+    border-radius: 22px;
+    width: 100%;
+    max-width: 600px;
+    color: #3b2617;
+    border: 1px solid rgba(154, 104, 57, 0.18);
+    position: relative;
+    margin: 0 auto;
+    box-shadow:
+        0 24px 48px rgba(32, 18, 9, 0.26),
+        0 0 0 1px rgba(255, 222, 179, 0.18);
+}
+
+.form-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(210, 132, 44, 0.55), rgba(255, 183, 93, 0.75), transparent);
+}
+
+.form-box::after {
+    content: "";
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(222, 170, 90, 0.26), transparent 70%);
+    filter: blur(3px);
+    pointer-events: none;
+}
+
+.form-box h2 {
+    margin-top: 0;
+    color: #792c08db;
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    letter-spacing: 0.2px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.2rem;
+}
+
+.form-box h2::after {
+    content: "";
+    display: block;
+    margin: 2px 0 0;
+    width: 200px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #c47a2c, #e6a64d);
+    box-shadow: 0 2px 4px rgba(196, 122, 44, 0.3);
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+    width: 100%;
+    padding: 6px 9px;
+    margin: 0 0 0;
+    border: 1px solid rgba(196, 122, 44, 0.3);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #2a170e;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,0.05),
+        0 2px 4px rgba(196, 122, 44, 0.08);
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 400;
+}
+
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+    border-color: rgba(196, 122, 44, 0.3) !important;
+    outline: none !important;
+    box-shadow:
+        0 0 0 3px rgba(196, 122, 44, 0.15),
+        0 4px 12px rgba(196, 122, 44, 0.12),
+        inset 0 1px 3px rgba(0,0,0,0.05);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Make Age field non-clickable but still submittable (readonly already set) */
+#age, #idnumber {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.form-box button {
+    width: 45%;
+    max-width: 220px;
+    padding: 5px 16px;
+    background: linear-gradient(135deg, #c47a2c 0%, #e6a64d 100%);
+    border: none;
+    color: #2f1a0d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(196, 122, 44, 0.3);
+    display: block;
+    margin: 4px auto 0;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    box-shadow: 
+        0 4px 12px rgba(196, 122, 44, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-box button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: -1; /* Keep it behind the button text */
+}
+
+/* Make the switch (Already have an account?) highly legible */
+.switch-form {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 16px;
+    color: #2a170e;
+    padding: 12px 16px;
+    background: rgba(255, 244, 230, 0.9);
+    border-radius: 10px;
+    border: 1px solid rgba(196, 122, 44, 0.2);
+    backdrop-filter: blur(8px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.switch-form a {
+    color: #b46c1e;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Register Form 5-column Grid */
+.form-box.register-form {
+    width: 82vw; /* scale like zoom relative to viewport */
+    max-width: 850px;
+    padding: 10px 16px 12px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-size: clamp(0.75rem, 0.85vw, 0.85rem); /* scale inner content proportionally */
+    contain: layout paint; /* isolate internal layout changes (Edge-safe) */
+    /* Visual theming: match the Next button's light brown palette for a cohesive look */
+    background: rgba(249, 239, 224, 0.97);
+    border: 1px solid rgba(196, 122, 44, 0.25);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 8px 24px rgba(196, 122, 44, 0.15),
+        0 0 0 1px rgba(196, 122, 44, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(196, 122, 44, 0.1);
+    color: #3b2617; /* dark brown text to match button */
+    border-radius: 16px;
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-box.register-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c47a2c, #e6a64d, #c47a2c);
+    border-radius: 16px 16px 0 0;
+    z-index: 1;
+}
+
+/* Ensure button is always clickable within form */
+.form-box.register-form #next-button {
+    z-index: 1000 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    display: block !important;
+}
+
+/* Override full-row pointer-events for next button specifically */
+.full-row #next-button,
+.form-box.register-form .full-row #next-button {
+    pointer-events: auto !important;
+    z-index: 1001 !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+/* Ensure form content doesn't cause expansion */
+.form-box.register-form > * {
+    flex-shrink: 1;
+    min-height: 0;
+}
+
+.form-box.register-form > .register-grid {
+    flex: 0 1 auto;
+}
+
+/* Ensure the switch-form is always visible inside the form */
+.form-box.register-form .switch-form {
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+    margin-top: 4px;
+    flex-shrink: 0;
+    /* Match Register button width and center */
+    width: 60%;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Removed duplicate early #next-button definition; authoritative styles are scoped later in the file. */
+
+.register-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 0px 2px;
+    align-items: start;
+    width: 100%;
+    flex-shrink: 1;
+    min-height: 0;
+    margin-bottom: 0;
+}
+
+/* Ensure each grid item maintains consistent structure */
+.register-grid > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    box-sizing: border-box;
+    width: 100%; /* Constrain to grid cell width */
+    max-width: 100%; /* Prevent overflow */
+    margin: 0; /* No margins to prevent shifts */
+    padding: 0; /* No padding to prevent shifts */
+    overflow: visible; /* Allow error messages to be visible */
+}
+
+/* Address rows - 4 equal columns to match main register grid */
+.register-grid.address-row {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 0px 2px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Spacing between consecutive address rows */
+.register-grid.address-row + .register-grid.address-row {
+    margin-top: 0;
+}
+
+.register-grid label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 1px;
+    color: #2a170e;
+    font-size: 0.85rem;
+    text-align: left;
+    letter-spacing: 0.08px;
+}
+
+.optional {
+    color: red;
+    font-weight: normal;
+    font-size: 0.7rem;
+    margin-left: 2px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin: 0.5px 0 0 0; /* Only top margin, no left/right margins */
+    padding: 0; /* No padding to prevent horizontal expansion */
+    min-height: 12px; /* Reserve fixed space to prevent layout shifts */
+    max-height: 20px;
+    width: 100%; /* Constrain to parent width */
+    max-width: 100%; /* Prevent overflow beyond container */
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    line-height: 1.4;
+    -webkit-transition: opacity 0.2s ease, max-height 0.3s ease;
+    -ms-transition: opacity 0.2s ease, max-height 0.3s ease;
+    transition: opacity 0.2s ease, max-height 0.3s ease;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Prevent flex shrinking */
+    flex-grow: 0; /* Prevent flex growing */
+}
+
+.error-message.show {
+    visibility: visible;
+    opacity: 1;
+    min-height: 12px; /* Maintain consistent height */
+    max-height: 180px; /* Allow expansion for longer messages */
+    margin: 0.5px 0 0 0; /* Only top margin, no left/right margins */
+    padding: 0; /* No padding to prevent horizontal expansion */
+}
+
+.password-strength {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-height: 0; /* no reserved height when helper is hidden */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0; /* fade only */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-transition: opacity 0.2s ease;
+    -ms-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease; /* no height/padding transition to avoid box resize */
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* Confirm password match message below the confirm field */
+.password-match {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-height: 0; /* no reserved height when helper is hidden */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease;
+    -ms-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+.password-match.success {
+    color: #2ed573; /* green */
+    opacity: 1;
+    min-height: 14px; /* show helper row only when match text is visible */
+    display: block;
+    max-height: 14px;
+}
+
+.password-strength.weak,
+.password-strength.medium,
+.password-strength.strong {
+    min-height: 14px; /* show helper row only when strength text is visible */
+    max-height: 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: 1;
+    flex-shrink: 0;
+}
+.password-strength.weak { color: #dc3545; }
+.password-strength.medium { color: #ffa502; }
+.password-strength.strong { color: #2ed573; }
+
+/* Authentication Questions Styling */
+.auth-questions {
+    margin-top: 12px;
+    padding: 16px;
+    background: rgba(255, 244, 230, 0.85);
+    border-radius: 18px;
+    border: 1px solid rgba(202,169,122,0.28);
+    animation: slideDown 0.5s ease-out;
+    max-height: 400px;
+    overflow-y: visible;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 36px rgba(63, 35, 18, 0.18);
+}
+
+/* Security Questions Page - scoped layout to match Register Form design
+   - center the three questions inside their form box both horizontally and vertically
+   - reuse the same Next/Register button appearance used on the Register page
+   These rules are scoped to the .security-questions-page body class so other pages are unaffected. */
+.security-questions-page .form-box.register-form {
+    /* center content vertically inside the form box for this page */
+    display: flex; /* already set globally, reaffirm here */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.security-questions-page .auth-questions-center {
+    /* switch this one page from grid to stacked column so the 3 questions are centered neatly */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center horizontally */
+    justify-content: center; /* center vertically within available space */
+    gap: 12px; /* maintain comfortable spacing similar to register grid */
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.security-questions-page .auth-questions-center > div {
+    /* each question block should match the form field width and be centered */
+    width: 100%;
+    max-width: 520px; /* keep consistent with form column widths */
+    box-sizing: border-box;
+}
+
+.security-questions-page .auth-questions-center label {
+    text-align: left; /* keep label aligned left within each centered block */
+}
+
+/* Shared button style to match the Register Next button appearance */
+.security-questions-page .prev-btn,
+.security-questions-page .next-btn,
+#prev-button,
+#next-button {
+    width: 45%;
+    max-width: 100px;
+    padding: 5px 16px;
+    background: linear-gradient(135deg, #c47a2c 0%, #e6a64d 100%) !important;
+    border: 1px solid rgba(196, 122, 44, 0.3) !important;
+    color: #2f1a0d !important;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 4px !important;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    margin: 4px auto 0;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    box-shadow: 
+        0 4px 12px rgba(196, 122, 44, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.security-questions-page .prev-btn,
+#prev-button {
+    background: linear-gradient(135deg, #b87527 0%, #dca24b 100%) !important;
+}
+
+#next-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: -1; /* Keep it behind the button text */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-questions h3 {
+    color: #a05f1a;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.auth-questions p {
+    color: #6b4425;
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+}
+
+.auth-question {
+    margin-bottom: 8px;
+}
+
+.auth-question label {
+    display: block;
+    margin-bottom: 4px;
+    color: #3f2415;
+    font-size: 0.8rem;
+}
+
+.auth-question select,
+.auth-question input {
+    width: 100%;
+    margin-bottom: 4px;
+}
+/* Ensure Q3 error aligns with Q1 and Q2 */
+#auth_answer3-error { min-height: 12px; margin-top: -2px; margin-bottom: -2px; }
+/* Add a bit more space below the last security answer before the button */
+#auth_answer3 {
+    margin-bottom: 4px;
+}
+
+.register-grid input,
+.register-grid select,
+.register-grid textarea {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box;
+    word-wrap: break-word;
+    flex-shrink: 0;
+    margin-left: 0; /* No left margin */
+    margin-right: 0; /* No right margin */
+    /* Padding is inherited from .form-box input styles - do not override */
+}
+
+/* Ensure labels maintain consistent spacing */
+.register-grid label {
+    flex-shrink: 0;
+    margin-left: 0; /* No left margin */
+    margin-right: 0; /* No right margin */
+    padding-left: 0; /* No left padding */
+    padding-right: 0; /* No right padding */
+    width: 100%; /* Constrain to container */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box;
+}
+
+.register-grid .full-row {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+}
+
+/* Avoid extra space below the pinned switch */
+.register-grid .full-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure full-row container doesn't block button clicks */
+.full-row {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    margin-top: 4px;
+}
+
+.full-row button,
+.full-row #next-button,
+.form-box.register-form .full-row button,
+.form-box.register-form .full-row #next-button {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1001 !important;
+    cursor: pointer !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+    .register-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .register-grid.address-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form-box.register-form {
+        max-width: 720px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Error states: keep readable, expand only when many errors */
+.hero-inner.has-errors .form-box.register-form {
+    /* Keep width consistent; allow content to expand vertically */
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+.hero-inner.has-many-errors .form-box.register-form {
+    /* Maintain same width; only grow vertically as needed */
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* Grid gap remains consistent at 0px 4px - no changes when errors appear to prevent layout shifts */
+
+/* Ensure the hero and background fit viewport */
+.bg-register, .hero, .hero-inner {
+    overflow: visible;
+}
+
+/* Keep left-side fixed with no scrolling */
+
+/* Responsive Design for Two-Column Layout */
+@media (max-width: 1200px) {
+    .hero-inner {
+        flex-direction: column;
+        gap: 12px;
+        padding: 60px 12px 12px;
+    }
+    
+    .left-side {
+        order: 2;
+        height: auto;
+        min-height: auto;
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .hero-inner {
+        padding: 60px 10px 10px;
+    }
+    
+    .register-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px 6px;
+    }
+    
+    .register-grid.address-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .form-box.register-form {
+        padding: 10px 12px 30px;
+    }
+    
+    .floating-icon {
+        font-size: 20px;
+    }
+    
+    .testimonial {
+        padding: 8px;
+    }
+    
+    .quote {
+        font-size: 10px;
+    }
+    
+    .author {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .header-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-actions {
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .register-grid {
+        grid-template-columns: 1fr;
+        gap: 2px 4px;
+    }
+    
+    .register-grid.address-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-box.register-form {
+        padding: 8px 10px 25px;
+    }
+}
+
+/* Calendar and Password Icons - White Color */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    filter: invert(1);
+}
+
+/* Footer */
+.main-footer {
+    width: 100%;
+    background: linear-gradient(90deg, #b37944 0%, #221610 100%);
+    color: #fff;
+    padding: 8px 0 6px 0;
+    border-top: 1px solid #c47a2c;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    transform: scale(1);
+    transform-origin: bottom center;
+}
+
+/* Password visibility toggle icon inside inputs */
+.input-with-toggle { position: relative; }
+.input-with-toggle input { padding-right: 34px; }
+.input-with-toggle .togele-eye {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1;
+    pointer-events: auto;
+}
+.input-with-toggle .togele-eye:hover { color: #555; }
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0 1rem;
+    font-size: 0.8rem;
+}
+

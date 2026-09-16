@@ -1,0 +1,267 @@
+/* Hide native password reveal/clear icons across browsers (global safety) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+	display: none;
+}
+input[type="password"]::-webkit-textfield-decoration-container {
+	display: none;
+}
+
+/* General body styles (no background image here) */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 120px;
+
+    /* fallback solid color */
+    background: #0d0d0d;
+}
+
+/* Header */
+.main-header {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #b37944 0%, #221610 100%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    z-index: 1000;
+    border-bottom: 1.5px solid #c47a2c;
+}
+
+.header-content {
+    max-width: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem 0.75rem 0; /* flush left */
+}
+
+.header-content h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.75rem;
+    letter-spacing: 1.2px;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.8px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 209, 128, 0.8) 0%,
+        rgba(255, 179, 71, 1) 50%,
+        rgba(255, 209, 128, 0.8) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(255, 209, 128, 0.5);
+}
+
+/* Home page only (background food.jpg) */
+.bg-home {
+    height: 100vh;
+    width: 100vw;
+    background: 
+        url("../images/bubble-tea.png") no-repeat center center; /* ✅ food.jpg sa imo images folder */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* remove scroll */
+    padding: 0;
+}
+
+/* Home message box */
+.home-message {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #f5f5f5;
+    background: rgba(34, 22, 16, 0.75);
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(196, 122, 44, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(196, 122, 44, 0.2);
+}
+
+.home-message h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: #ffd180;
+    text-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 209, 128, 0.3);
+    font-weight: 700;
+}
+
+.home-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f5d0a3;
+    font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .header-content {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .home-message {
+        max-width: 550px;
+        padding: 1.75rem 2rem;
+    }
+    
+    .home-message h2 {
+        font-size: 2.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .home-message {
+        max-width: 90%;
+        padding: 1.5rem 1.75rem;
+        margin: 0 1rem;
+    }
+    
+    .home-message h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .home-message p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .header-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-actions {
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .home-message {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .home-message h2 {
+        font-size: 1.5rem;
+    }
+    
+    .home-message p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Footer */
+.main-footer {
+    width: 100%;
+    background: linear-gradient(90deg, #b37944 0%, #221610 100%);
+    color: #fff;
+    padding: 12px 0;
+    border-top: 2px solid #c47a2c;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    font-family: 'Largo', 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 10px 0;
+    }
+    
+    .footer-content {
+        font-size: 0.85rem;
+    }
+}
+

@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# ALLOW: same-origin/same-site script fetches
+RewriteCond %{HTTP:Sec-Fetch-Dest} ^script$ [NC]
+RewriteCond %{HTTP:Sec-Fetch-Site} ^(same-origin|same-site)$ [NC]
+RewriteRule \.js$ - [L]
+
+# ALLOW: requests with Referer from our site (covers browsers without Sec-Fetch headers)
+RewriteCond %{HTTP_REFERER} ^https?://(localhost|127\.0\.0\.1)/BrewHaven [NC]
+RewriteRule \.js$ - [L]
+
+# DENY everything else (direct opens, view-source clicks, cross-site)
+RewriteRule \.js$ - [R=404,L]
+
+ErrorDocument 404 /BrewHaven/html/404.html
